@@ -20,7 +20,7 @@ app.use((_, res) => {
 
 app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
-  res.status(status).json({ message });
+   res.status(status).json({ message });
 });
 
 const { DB_HOST } = process.env;
