@@ -4,7 +4,7 @@ import express from "express";
 import contactsControllers from "../controllers/contactsControllers.js";
 import isEmptyBody from "../midalwars/isEmptyBody.js";
 import validateBody from "../helpers/validateBody.js";
-import { createContactSchema, updateContactSchema } from "../schemas/contactsSchemas.js";
+import { createContactSchema, updateContactSchema , updateFavoriteSchema} from "../schemas/contactsSchemas.js";
 
 const contactsRouter = express.Router();
 
@@ -13,5 +13,7 @@ contactsRouter.get("/:id", contactsControllers.getOneContact);
 contactsRouter.post("/", isEmptyBody, validateBody(createContactSchema), contactsControllers.createContact);
 contactsRouter.put("/:id", isEmptyBody, validateBody(updateContactSchema), contactsControllers.updateContact);
 contactsRouter.delete("/:id", contactsControllers.deleteContact);
+contactsRouter.patch("/:contactId/favorite", validateBody(updateFavoriteSchema), contactsControllers.updateStatusContact);
+
 
 export default contactsRouter;
