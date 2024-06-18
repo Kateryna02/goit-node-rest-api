@@ -1,6 +1,6 @@
 
 
-import Contact from "./models/contact.js";
+import Contact from "../models/contact.js";
 
 
 export const listContacts = () => Contact.find();
