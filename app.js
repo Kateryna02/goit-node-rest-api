@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 
 import contactsRouter from "./routes/contactsRouter.js";
-import authRouter from "./routes/authRouter.js";
 
 const app = express();
 
