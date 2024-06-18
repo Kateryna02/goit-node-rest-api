@@ -5,13 +5,14 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 
 import contactsRouter from "./routes/contactsRouter.js";
-
+import authRouter from "./routes/authRouter.js";
 const app = express();
 
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/auth", authRouter);
 app.use("/api/contacts", contactsRouter);
 
 app.use((_, res) => {
