@@ -1,12 +1,15 @@
 
 
-import express from "express";
+import express from 'express';
 import contactsControllers from "../controllers/contactsControllers.js";
 import isEmptyBody from "../midalwars/isEmptyBody.js";
 import validateBody from "../helpers/validateBody.js";
 import { createContactSchema, updateContactSchema , updateFavoriteSchema} from "../schemas/contactsSchemas.js";
+import authtnticate from "../midalwars/authenticate.js"
 
 const contactsRouter = express.Router();
+
+contactsRouter.use(authtnticate);
 
 contactsRouter.get("/", contactsControllers.getAllContacts);
 contactsRouter.get("/:id", contactsControllers.getOneContact);

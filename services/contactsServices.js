@@ -3,7 +3,10 @@
 import Contact from "../models/contact.js";
 
 
-export const listContacts = () => Contact.find();
+export const listContacts = (params = {}) => {
+    const { filter, fields, settings } = params;
+    return Contact.find(filter, fields, settings);
+  };
 
 export const getContactById = id => Contact.findById(id);
 
