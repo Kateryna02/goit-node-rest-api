@@ -20,7 +20,11 @@ const contactSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'user',
-}
+  },
+  poster: {
+    type: String,
+    required: true,
+  }
 }, {versionKey: false, timestamps: true});
 
 const Contact = model('Contact', contactSchema);
