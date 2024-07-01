@@ -3,8 +3,10 @@ import * as contactsService from "../services/contactsServices.js";
 import HttpError from "../helpers/HttpError.js";
 import wrapper from "../decorator/wraper.js";
 import getFilter from "../helpers/getFilter.js";
+import fs from "fs/promises";
+import path, { join } from "path";
 
-
+const avatarsDir = path.resolve("public", "avatars");
 
 const getAllContacts = async (req, res) => {
   const { _id: owner } = req.user; 
@@ -41,8 +43,13 @@ const deleteContact = async (req, res) => {
 
 const createContact = async (req, res) => {
   const { _id: owner } = req.user;
-  const result = await contactsService.addContact({...req.body, owner});
+  const { path: oldPath, filename } = req.file;
+      const newPath = path.join(avatarsDir, filename);
+  await fs.rename(oldPath, newPath);
+  const poster = path.join( "avatars", filename)
+  const result = await contactsService.addContact({...req.body, poster, owner});
   res.status(201).json(result);
+
 };
 
 const updateContact = async (req, res) => {

@@ -29,3 +29,6 @@ const authtnticate = async (req, res, next) => {
     next();
 }
 export default authtnticate;
+
+
+

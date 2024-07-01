@@ -2,6 +2,7 @@
 import {Schema, model} from "mongoose";
 import {handleSaveError}  from "../models/hooks.js"
 
+
 const userSchema = new Schema(
   {
     username: {
@@ -25,6 +26,10 @@ const userSchema = new Schema(
     token: {
       type: String,
       default: null,
+    },
+    avatarURL: {
+      type: String,
+     
     },
   },
   { versionKey: false, timestamps: true }
