@@ -1,6 +1,5 @@
-
-import {Schema, model} from "mongoose";
-import {handleSaveError}  from "../models/hooks.js"
+import { Schema, model } from "mongoose";
+import { handleSaveError } from "../models/hooks.js";
 
 
 const userSchema = new Schema(
@@ -8,7 +7,7 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-  },
+    },
     password: {
       type: String,
       required: [true, "Password is required"],
@@ -29,8 +28,18 @@ const userSchema = new Schema(
     },
     avatarURL: {
       type: String,
-     
     },
+    
+      verify: {
+        type: Boolean,
+        default: false,
+      },
+      verificationToken: {
+        type: String,
+        required: [true, 'Verify token is required'],
+      },
+    
+    
   },
   { versionKey: false, timestamps: true }
 );
