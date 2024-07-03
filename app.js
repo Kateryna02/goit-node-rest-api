@@ -9,8 +9,8 @@ import 'dotenv/config';
 import contactsRouter from "./routes/contactsRouter.js";
 import authRouter from "./routes/authRouter.js";
 import authenticate from "./midalwars/authenticate.js";
-import upload from "./midalwars/upload.js"; 
-import authControllers from "./controllers/authControllers.js"; 
+import upload from "./midalwars/upload.js";
+import authControllers from "./controllers/authControllers.js";
 
 const app = express();
 
@@ -21,7 +21,6 @@ app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
 app.use("/api/contacts", contactsRouter);
-
 
 app.patch("/users/avatars", authenticate, upload.single("avatar"), authControllers.updateAvatar);
 
@@ -44,4 +43,3 @@ mongoose.connect(DB_HOST)
     console.log(error.message);
     process.exit(1);
   });
-
